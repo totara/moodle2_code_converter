@@ -339,6 +339,7 @@ class general_fix extends moodle2_fixer {
                 }
                 break;
             case 15: // '/get_context_instance\(CONTEXT_/'
+                /* remove for now: needs further work
                 $func = $this->get_function_definition($line, 'get_context_instance');
                 if ($func) {
                     $params = $this->parse_for_params($func, 'get_context_instance');
@@ -348,6 +349,7 @@ class general_fix extends moodle2_fixer {
                         $line = str_replace($func, "*M2SCAN{$newline}M2SCAN*", $line);
                     }
                 }
+                */
                 break;
         }
         return $line;
