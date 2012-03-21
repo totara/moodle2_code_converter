@@ -205,7 +205,7 @@ foreach ($langdirs as $langdir) {
                             $parsestring = trim($matches['text']);
                             $stringvar = $matches['stringvar'];
                             if (!isset($string[$stringvar])) {
-                                $contents[$lastline + ($added+1)] = '$string[\'' . $stringvar . '\'] = \'' . str_replace("'","\'",$output) . '\';';
+                                $contents[$lastline + ($added+1)] = '$string[\'' . $stringvar . '\'] = \'' . str_replace("'","\'",$parsestring) . '\';';
                                 echo "<br />adding string['" . $stringvar . "'] to $val";
                                 $added++;
                             } else {

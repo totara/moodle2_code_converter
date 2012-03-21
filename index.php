@@ -46,8 +46,8 @@ function validate() {
 </head>
 <body>
 Let the scanner know the root folder of your moodle2 installation and (optionally) a particular sub-path you want to scan<br />
-e.g. Root: /var/www/moodle2 Scan: totara/reportbuilder will scan<br />
-/var/www/moodle2/totara/reportbuilder and all subfolders. Leave "Scan path" blank to scan everything
+e.g. Root: /var/www/moodle2, Scan: totara/reportbuilder will scan<br />
+/var/www/moodle2/totara/reportbuilder and all subfolders.<br /><br />Note that you do NOT add a leading / to the scan path<br />Leave "Scan path" blank to scan everything under the root path.
 <form name="frmData" action="m2check.php" method="post">
 <br /><br />
 Root directory:<input type="text" size="40" name="root_path">
