@@ -115,7 +115,7 @@ $other = array (
         '/(if|while|for|return).*>(?<!\->)get_recordset(_list|_select|_sql)?/',
         '/SELECT DISTINCT.*\.\*/',
         "/get_in_or_equal\(.*SQL_PARAMS_NAMED\s*,\s*'.*\d'/",
-        
+        "/addslashes\(/",
 );
 
 /// List of reserved words
