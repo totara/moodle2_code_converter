@@ -339,17 +339,19 @@ class general_fix extends moodle2_fixer {
                 }
                 break;
             case 15: // '/get_context_instance\(CONTEXT_/'
-                /* remove for now: needs further work
                 $func = $this->get_function_definition($line, 'get_context_instance');
                 if ($func) {
                     $params = $this->parse_for_params($func, 'get_context_instance');
                     if (isset($params[0])) {
-                        $class = strtolower(str_replace('CONTEXT_', '', $params[0]));
-                        $newline = 'context_' . $class . '::instance()';
+                        $class = strtolower($params[0]);
+                        $newline = $class . '::instance(';
+                        if(isset($params[1])) {
+                            $newline .= $params[1];
+                        }
+                        $newline .= ')';
                         $line = str_replace($func, "*M2SCAN{$newline}M2SCAN*", $line);
                     }
                 }
-                */
                 break;
         }
         return $line;
@@ -443,7 +445,7 @@ class general_fix extends moodle2_fixer {
                             $newcap = $oldcap;
                         }
                     }
-                    $newline = 'require_capability(' . $newcap . '';
+                    $newline = 'require_capability(\'' . $newcap . '\'';
                     if (isset($params[1])) {
                         $newline .= ', ' . $params[1];
                     }

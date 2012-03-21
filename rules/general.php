@@ -44,7 +44,8 @@ $deprecated = array(
     '/update_(course|module|tag)+_button/',
     '/print_heading(_block|_with_help)+/',
     '/isguest[(]+/',
-    '/get_context_instance\(CONTEXT_/'
+    '/get_context_instance\(CONTEXT_/',
+    '/new object()/'
 );
 
 $unsupported = array(
