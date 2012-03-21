@@ -75,7 +75,7 @@ class moodle2_fixer {
         }
         $arrstring = "array(";
         for ($x=$start;$x<=$end;$x=$x+2) {
-            if (isset($params[$x]) && isset($params[$x+1]) && trim($params[$x]) != '' && trim($params[$x]) != "''") {
+            if (isset($params[$x]) && isset($params[$x+1]) && $params[$x] != 'null' && trim($params[$x]) != '' && trim($params[$x]) != "''") {
                 if (strlen($arrstring)>6){
                     $arrstring .= ", ";
                 }
@@ -86,6 +86,7 @@ class moodle2_fixer {
             }
         }
         $arrstring .= ")";
+        if ($arrstring == "array()" || $arrstring == "array(null => null)") { $arrstring = "null"; }
         return $arrstring;
     }
 

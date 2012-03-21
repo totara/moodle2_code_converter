@@ -307,14 +307,15 @@ class output_fix extends moodle2_fixer {
                         if ($arr) {
                             $arrparams = $this->parse_for_params($arr, 'array');
                             foreach ($arrparams as $lib) {
-                                if(empty($lib)) {continue;}
-                                if(substr($lib,0,2) == '//') {continue;}
-                                $delim = (substr($lib,0,1) == '$')?'':'\'';
+                                if (empty($lib)) {continue;}
+                                if (substr($lib,0,2) == '//') {continue;}
+                                //strip out $CFG->wwwroot etc
+                                $lib = preg_replace('/\$CFG->(.*?)(?=\'|")/','', $lib);
                                 if (strpos($lib,"yui_")===0) {
                                     $lib = substr($lib,4);
-                                    $newline .= $white . '*M2SCAN$PAGE->requires->yui2_lib(' . $delim . $lib . $delim . ');' . "M2SCAN*\n";
+                                    $newline .= $white . '*M2SCAN$PAGE->requires->yui2_lib(' . $lib . ');' . "M2SCAN*\n";
                                 } else {
-                                    $newline .= $white . '*M2SCAN$PAGE->requires->js(' . $delim . $lib . $delim . ');' . "M2SCAN*\n";
+                                    $newline .= $white . '*M2SCAN$PAGE->requires->js(' . $lib . ');' . "M2SCAN*\n";
                                 }
                             }
                             $line = $newline;
@@ -324,6 +325,8 @@ class output_fix extends moodle2_fixer {
                 break;
             case 16: //local/icon/icon.php
                 $line = '*M2SCAN' . str_replace("/local/icon/icon.php", "/totara/core/icon/icon.php", $line) . 'M2SCAN*';
+                break;
+            case 17: //inline styles
                 break;
         }
         return $line;

@@ -45,7 +45,8 @@ $display = array(
     '/admin_externalpage_print_(header|footer)/',
     '/get_string(.*?),\'local\'/',
     '/require_js/',
-    '/\/local\/icon\/icon.php/'
+    '/\/local\/icon\/icon.php/',
+    '/style=(\'|")(.*?);(\'|")/'
 );
 
 $forms = array(

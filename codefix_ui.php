@@ -352,6 +352,9 @@ function removeLine(line) {
             if(strpos($buffer,'M2SCAN')!==false){
                 $buffer = str_replace('*M2SCAN','<span class="codefix">',$buffer);
                 $buffer = str_replace('M2SCAN*','</span>',$buffer);
+                //trim any surplus (happens sometimes in multiline fixes)
+                $buffer = str_replace('M2SCAN', '', $buffer);
+                $buffer = str_replace('<span class="codefix">*', '', $buffer);
             }
         }
         echo "<div class=\"line r$rowclass $lineclass\" id=\"line_$line\">";
