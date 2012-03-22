@@ -39,6 +39,9 @@ $cur_langfile = null; $lastline = -1;
 $deletedfiles = array();
 foreach ($_POST as $key => $val) {
     if ($key == 'helpdir' || $key == 'root_path' || $key == 'scan_path') {continue;}
+    if ($key == 'btnSubmit' || $key == 'btnDelete' || $key == 'btnIgnore') {
+        continue;
+    }
     if ($val == 'IGNORE') {continue;}
     if ($val == 'DELETE') {
         echo '<br />Delete ' . $helpdir . '/' . $key . '.html';
