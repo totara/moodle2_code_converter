@@ -452,6 +452,49 @@ class general_fix extends moodle2_fixer {
                     if (isset($params[1])) {
                         $newline .= ', ' . $params[1];
                     }
+                    if (isset($params[2])) {
+                        $newline .= ', ' . $params[2];
+                    }
+                    if (isset($params[3])) {
+                        $newline .= ', ' . $params[3];
+                    }
+                    if (isset($params[4])) {
+                        $newline .= ', ' . $params[4];
+                    }
+                    if (isset($params[5])) {
+                        $newline .= ', ' . $params[5];
+                    }
+                    $newline .= ')';
+                    $line = str_replace($func, "*M2SCAN{$newline}M2SCAN*", $line);
+                }
+                break;
+            case 1: //has_capability
+                $capsmap = $this->totara_get_capability_upgrade_map();
+                $func = $this->get_function_definition($line, 'has_capability');
+                if ($func) {
+                    $params = $this->parse_for_params($func, 'has_capability');
+                    $oldcap = $params[0];
+                    if (strpos($oldcap, '$prefix')!==false) {
+                        $newcap = str_replace('moodle/local', 'totara/hierarchy', $oldcap);
+                    } else {
+                        //check for a match
+                        $capkey = str_replace("'","",$oldcap);
+                        if (isset($capsmap[$capkey])) {
+                            $newcap = $capsmap[$capkey]['newcap'];
+                        } else {
+                            $newcap = $oldcap;
+                        }
+                    }
+                    $newline = 'has_capability(\'' . $newcap . '\'';
+                    if (isset($params[1])) {
+                        $newline .= ', ' . $params[1];
+                    }
+                    if (isset($params[2])) {
+                        $newline .= ', ' . $params[2];
+                    }
+                    if (isset($params[3])) {
+                        $newline .= ', ' . $params[3];
+                    }
                     $newline .= ')';
                     $line = str_replace($func, "*M2SCAN{$newline}M2SCAN*", $line);
                 }

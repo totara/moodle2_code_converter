@@ -60,7 +60,8 @@ $other = array(
 );
 
 $capability = array(
-    '/require_capability\((\'|")(moodle\/local|local\/)/'
+    '/require_capability\((\'|")(moodle\/local|local\/)/',
+    '/has_capability\((\'|")(moodle\/local|local\/)/'
 );
 //$deprecated = calculate_megarule($deprecated);
 //$other = calculate_megarule($other);
