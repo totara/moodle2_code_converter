@@ -384,7 +384,7 @@ class output_fix extends moodle2_fixer {
                     }
                     if ($elem && $helpidentifier) {
                         $component = str_replace("local_","totara_",$component);
-                        $newline = $white . '*M2SCAN$mform->addHelpButton(' . $elem . ', ' . $helpidentifier . ', ' . $component;
+                        $newline = $white . '*M2SCAN' . $matches[1] . '->addHelpButton(' . $elem . ', ' . $helpidentifier . ', ' . $component;
                         if ($linktext) {
                             $newline .= ', ' . $linktext;
                         }
