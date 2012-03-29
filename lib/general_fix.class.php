@@ -354,7 +354,7 @@ class general_fix extends moodle2_fixer {
                 }
                 break;
             case 16: //new object
-                $line = str_replace('object()', '*M2SCANstdClass()M2SCAN*', $line);
+                $line = preg_replace('/object(\(\))?/', '*M2SCANstdClass()M2SCAN*', $line);
                 break;
         }
         return $line;
