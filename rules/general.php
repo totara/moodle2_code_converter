@@ -32,7 +32,7 @@ $deprecated = array(
     '/button_to_popup_window/',
     '/choose_from_menu(_nested|_yesno)?/',
     '/choose_from_radio/',
-    '/close_window_button/',
+    '/(?<!\->)close_window_button/',
     '/doc_link/',
     '/formerr/',
     '/helpbutton\(/',
