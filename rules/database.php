@@ -39,7 +39,7 @@ $dml = array (
         '/(?<!\$DB\->)records_to_menu/',
         '/(?<!\$DB\->)recordset_to_(array|menu)/',
         '/rs_(EOF|close|fetch_record|next_record)/',
-        '/(?<!\$DB\->)set_field(_select)?/',
+        '/(?<!\$DB\->)set_field(_select)?\(/',
         '/(?<!\$DB\->)update_record/',
         '/rs_fetch_next_record/',
 );
